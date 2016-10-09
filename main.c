@@ -52,13 +52,10 @@ TCCR0A |= (1 << COM0B1) | (1 << COM0B0); /* inverting for OC0B - PD5*/
 
 
 DDRD |= (1 << DDD6)|(1 << DDD5); /* set DDRs for output on OC0A/B */
-
-/* debug */
-OCR0A = 200;
 }
 
 static inline void writeSine(uint8_t c) {
-	OCR0A = getSine(c); /* update first comparator unit */
+	OCR0A = sinetable[c]; /* update first comparator unit */
 	OCR0B = OCR0A; /*update inverting comparator */
 }
 
@@ -71,9 +68,7 @@ int main(void)
 	initPWM(); /* setup Timer0 for 8-bit Fast PWM, 1/8 clkIO prescaler */
 
 	TCNT0 = 0; /* clear Timer0 */
-
-	DDRB = 0xFF;
-	PORTB = 0xFF;
+	GTCCR &= (1 < TSM);
 
 	/* debug */
 	/* writeSine(100); */
@@ -85,7 +80,7 @@ int main(void)
 		*/
 		
 		writeSine(counter++); 
-		_delay_ms(15); /* reduced resolution shouldn't matter here so the abs max is 6.5535 seconds */
+		_delay_ms(150); /* reduced resolution shouldn't matter here so the abs max is 6.5535 seconds */
 
     }
 

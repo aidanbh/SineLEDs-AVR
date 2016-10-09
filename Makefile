@@ -4,7 +4,7 @@
 ##########    Check these every time you start a new project    ##########
 ##########------------------------------------------------------##########
 
-MCU   = m328p
+MCU   = atmega328p
 F_CPU = 1000000UL  
 BAUD  = 19200UL
 ## Also try BAUD = 19200 or 38400 if you're feeling lucky.
@@ -22,7 +22,7 @@ LIBDIR = ../AVR-Programming/AVR-Programming-Library
 
 PROGRAMMER_TYPE = avrisp
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
-PROGRAMMER_ARGS = -P /dev/ttyACM0 -b 19200	
+PROGRAMMER_ARGS = -P /dev/ttyACM0 -b 19200 -p m328p
 
 ##########------------------------------------------------------##########
 ##########                  Program Locations                   ##########
@@ -126,7 +126,7 @@ squeaky_clean:
 ##########------------------------------------------------------##########
 
 flash: $(TARGET).hex 
-	$(AVRDUDE) -c $(PROGRAMMER_TYPE) -p $(MCU) $(PROGRAMMER_ARGS) -U flash:w:$<
+	$(AVRDUDE) -c $(PROGRAMMER_TYPE) $(PROGRAMMER_ARGS) -U flash:w:$<
 
 ## An alias
 program: flash
