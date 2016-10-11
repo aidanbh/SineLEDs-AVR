@@ -17,7 +17,7 @@
 
 /* store this in the AVR's program memory to save RAM */
 
-static const uint8_t sinetable[] PROGMEM = { /* if this runs too fast, just cut sine in half and invert values */
+static const uint8_t sinetable[] /*PROGMEM*/ = { /* if this runs too fast, just cut sine in half and invert values */
 	128,131,134,137,140,143,146,149,152,155,158,162,165,167,170,173,176,179,182,185,
 	188,190,193,196,198,201,203,206,208,211,213,215,218,220,222,224,226,228,230,232,
 	234,235,237,238,240,241,243,244,245,246,248,249,250,250,251,252,253,253,254,254,

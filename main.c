@@ -43,7 +43,7 @@ static inline void initPWM(void){
 */
 
 TCCR0A |= (1 << WGM00) | (1 << WGM01); /* fast PWM, TOP=MAX */
-TCCR0B &= ~(1 << WGM02);
+//TCCR0B &= ~(1 << WGM02);
 
 TCCR0B |= (1 << CS01); /* 1/8 prescaler */
 
@@ -63,12 +63,12 @@ int main(void)
 {
 	/* Initialization code */
 
-	power_adc_disable(); /* save some power */
+//	power_adc_disable(); /* save some power */
 		
 	initPWM(); /* setup Timer0 for 8-bit Fast PWM, 1/8 clkIO prescaler */
 
 	TCNT0 = 0; /* clear Timer0 */
-	GTCCR &= (1 < TSM);
+//	GTCCR &= (1 < TSM);
 
 	/* debug */
 	/* writeSine(100); */
@@ -79,8 +79,10 @@ int main(void)
 		* pass counter to writeSine(), increment, delay, rinse and repeat...
 		*/
 		
-		writeSine(counter++); 
-		_delay_ms(150); /* reduced resolution shouldn't matter here so the abs max is 6.5535 seconds */
+	writeSine(counter++); 
+	_delay_ms(300); /* reduced resolution shouldn't matter here so the abs max is 6.5535 seconds */
+	/*OCR0A = 100;
+	OCR0B = 200;*/
 
     }
 
