@@ -1,10 +1,10 @@
 /*
  * SineLEDs.c
  *
- * License: The Unlicense Public Domain Rights Waiver
+ * License: GNU General Public License v3 or later
  *
  * Created: 27-Aug-16 12:24:23
- * Author : github.com/bithakr
+ * Author : github.com/aidanh010
  */ 
 
  /* Original Arduino Sketch:
